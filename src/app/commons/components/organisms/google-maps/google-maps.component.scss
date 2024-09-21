@@ -1,0 +1,11 @@
+// @use '/src/app/commons/styles/base/colors' as colors;
+
+.google-map {
+	height: 100%;
+	width: 100%;
+	&.map-mobile {
+		@media (max-width: 1199px) {
+			height: calc(100vh - 200px) !important;
+		}
+	}
+}

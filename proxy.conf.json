@@ -1,0 +1,6 @@
+{
+    "https://storagemarcodelf.blob.core.windows.net/": {
+      "target": "https://localhost:3000",
+      "secure": false
+    }
+}

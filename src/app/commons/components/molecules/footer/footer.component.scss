@@ -1,0 +1,12 @@
+.footer{
+  visibility: visible;
+  background-color: #a5261dfa !important;
+  color: white !important;
+}
+
+@media(max-width: 991px){
+  .footer{
+    visibility: hidden;
+  }
+
+}

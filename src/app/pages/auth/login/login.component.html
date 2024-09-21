@@ -1,0 +1,33 @@
+<div class="mat-elevation-z8" style="background: white;">
+  <h2 style="padding-top: 15px; text-align: center;">Movie Maps</h2>
+  <hr>
+  <div id="login-form" class="row">
+    <div class="col-md-12">
+      <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input matInput [formControl]="userFormControl" type="text" placeholder="Ingrese su usuario" />
+      </mat-form-field>
+    </div>
+    <div class="col-md-12">
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [formControl]="passwordFormControl" [type]="hide() ? 'password' : 'text'" placeholder="Ingrese su contraseña" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon matIconSuffix>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="col-md-12">
+      <mm-recaptcha (resolvedCaptcha)="resolvedCaptcha($event)"></mm-recaptcha>
+    </div>
+  </div>
+  <div class="row" style="justify-content: center; padding: 10px;">
+    <button (click)="login()" mat-flat-button>Iniciar Sesión</button>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="grid-container">
+  <div class="filter-container mat-elevation-z8">
+    <div class="row">
+      <div class="col-md-12">
+        <mm-search-field label="Busqueda" (valueChange)="onChangeSearch($event)"></mm-search-field>
+      </div>
+      <div class="col-md-12">
+        <mm-dropdown-list [items]="genres" [multiple]="true" label="Generos" (valueChange)="onDropdownChange($event)"></mm-dropdown-list>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Genero </th>
+        <td mat-cell *matCellDef="let element"> {{element.genre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="openDetail(element.id)" mat-mini-fab aria-label="Ver detalle">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   [length]="collectionSize"
+                   showFirstLastButtons
+                   aria-label="Seleccione la cantidad de registros">
+    </mat-paginator>
+  </div>
+</div>
