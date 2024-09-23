@@ -2,10 +2,10 @@
   <div class="filter-container mat-elevation-z8">
     <div class="row">
       <div class="col-md-12">
-        <mm-search-field label="Busqueda" (valueChange)="onChangeSearch($event)"></mm-search-field>
+        <mm-search-field label="Busqueda" [value]="search" (valueChange)="onChangeSearch($event)"></mm-search-field>
       </div>
       <div class="col-md-12">
-        <mm-dropdown-list [items]="genres" [multiple]="true" label="Generos" (valueChange)="onDropdownChange($event)"></mm-dropdown-list>
+        <mm-dropdown-list [value]="genreSelection" [items]="genres" [multiple]="true" label="Generos" (valueChange)="onDropdownChange($event)"></mm-dropdown-list>
       </div>
     </div>
   </div>

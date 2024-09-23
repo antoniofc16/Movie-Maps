@@ -35,17 +35,31 @@ export class MoviesGridComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.filterMovies = this.movies;
-    this.fetchData();
+    this.filterData();
   }
 
   onDropdownChange(event: any){
     this.genreSelection = event;
+    localStorage.setItem('genresFilter', this.genreSelection.join(','));
     this.filterData();
   }
 
   onChangeSearch(event: any){
     this.search = event;
+    localStorage.setItem('searchFilter', this.search);
     this.filterData();
+  }
+
+  getDataFromLocalStorage(){
+    var searchFilter = localStorage.getItem('searchFilter');
+    var genresFilter = localStorage.getItem('genresFilter');
+
+    if (searchFilter != null && searchFilter.length > 0)
+      this.search = searchFilter;
+    
+    if (genresFilter != null && genresFilter.length > 0)
+      this.genreSelection = genresFilter.split(',');
+
   }
 
   fetchData(){
@@ -56,6 +70,7 @@ export class MoviesGridComponent implements AfterViewInit {
   }
 
   filterData(){
+    this.getDataFromLocalStorage();
     this.filterMovies = this.movies.filter((movie) =>
       (this.search == null || this.search == undefined || this.search.length == 0 ? true : movie.title.toLowerCase().includes(this.search.toLowerCase()) || movie.description.toLowerCase().includes(this.search.toLowerCase())) &&
       (this.genreSelection.length == 0 ? true : this.genreSelection.includes(movie.genre))

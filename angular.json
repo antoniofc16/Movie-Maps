@@ -20,11 +20,15 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-						"assets": ["src/assets","src/assets/img"],
+						"assets": [
+              "src/assets",
+              "src/assets/img",
+              "src/web.config"
+            ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
-              "src/styles.css",
+              "src/styles.scss",
               "src/assets/scss/material-dashboard.scss"
             ],
             "scripts": [

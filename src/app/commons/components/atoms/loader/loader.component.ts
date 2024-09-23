@@ -10,7 +10,7 @@ import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./loader.component.scss'],
   standalone: true,
   imports: [CommonModule, NgxSpinnerComponent],
-  providers: [LoaderService, NgxSpinnerService]
+  providers: [LoaderService]
 })
 export class LoaderComponent implements OnDestroy{
   subscription: Subscription | null = null;
@@ -19,6 +19,7 @@ export class LoaderComponent implements OnDestroy{
   constructor(private loaderService: LoaderService) {
     this.subscription = this.loaderService.isLoading.subscribe(value => {
         this.isLoading = value;
+        console.log('LoaderComponent: ', this.isLoading);
       });
   }
 

@@ -13,8 +13,9 @@ export class DropdownListComponent implements OnInit {
   @Input() items: IDropdownListItem[] = [];
   @Input() multiple: boolean = false;
   @Input() label: string = '';
+  @Input() value: [] | string = '' || [];
   @Output() valueChange = new EventEmitter();
-  value: [] | string = '';
+  
   constructor() { }
 
   ngOnInit() {

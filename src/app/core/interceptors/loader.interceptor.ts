@@ -13,21 +13,6 @@ export class LoaderInterceptor implements HttpInterceptor {
 
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      if(request.headers.get("Internal-Type-Request") == "silent"){
-        return next.handle(request)
-        .pipe(
-            tap(() => {},
-                (err: any) => {
-                    if (err instanceof HttpErrorResponse) {
-                        console.log("Error: ", err);
-                        if (err.status !== 403) {
-                            return;
-                        }
-                    }
-                },
-            ));
-      }
-      else{
         this.loaderService.show();
         return next.handle(request)
         .pipe(
@@ -44,6 +29,5 @@ export class LoaderInterceptor implements HttpInterceptor {
                     }
                 },
             ));
-      }
     }
 }

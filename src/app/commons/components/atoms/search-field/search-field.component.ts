@@ -12,6 +12,7 @@ import { AppMaterialModule } from '../../../../app-material.module';
 export class SearchFieldComponent implements OnInit {
   @Input() label: string = '';
   @Output() valueChange = new EventEmitter();
+  @Input() value: string = '';
 
   constructor() { }
 
